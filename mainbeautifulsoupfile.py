@@ -12,11 +12,8 @@ for option in soup.find_all('option'):# geting dropdown value
         schemanamevalue.append(option["value"])
     except:
         pass
-count=0
+
 for schemaname in schemanamevalue:
-    count+=1
-    if count>3:
-        break
     try:
         s = requests.Session()
         file = open("myfile.Png", "wb")
@@ -27,8 +24,7 @@ for schemaname in schemanamevalue:
         data = {"answer": answer, "name": "sha", "schemaname": schemaname}
         r = s.post(BASE_URL, data=data)
         soup = BeautifulSoup(r.text, 'html.parser')
-        res=mainpagedata.mainpagedatafunction(soup) # passing to function  for saving data to database 
-        # print(res)
+        mainpagedata.mainpagedatafunction(soup) # passing to function  for saving data to database 
         print ("data save whose schemanamevalue is: " , schemaname)
     except:
         pass
