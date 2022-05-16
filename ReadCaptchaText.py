@@ -16,5 +16,3 @@ def  captcha_code():
     text = pytesseract.image_to_string(img)  
     answer=text[:-1]
     return (answer)
-def hello():
-    print("sddddd")
